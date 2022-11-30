@@ -4,8 +4,8 @@ export function auth() {
             resolve({
                 token: 'asdasdjkajnsdkaskdaksdaksdjkasjdajsdkajsdsasd',
                 user: {
-                    name: 'Antonio Vitor',
-                    email: 't8ninho@gmail.com',
+                    name: 'Nome Teste',
+                    email: 'teste@gmail.com',
                 },
             });
         }, 2000);

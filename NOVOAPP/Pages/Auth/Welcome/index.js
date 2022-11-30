@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
     View, 
     Text,
@@ -12,20 +12,52 @@ import * as Animatable from 'react-native-animatable'
 import { useNavigation } from '@react-navigation/native';
 import Theme from '../../../Theme';
 
+import Presente from '../../../assets/gift-dynamic-premium.png';
+import Estrela from '../../../assets/estrela.png';
+import Pincel from '../../../assets/pincel.png';
+import Coroa from '../../../assets/coroa.png';
+import Medalha from '../../../assets/medalha.png';
+
+
 
 export default function Welcome(){
     const navigation = useNavigation();
 
+    const [Foto, setFoto] = useState(Presente)
+
+    function trocarFoto() {
+        if (Foto === Presente) {
+            setFoto(Estrela)
+        } 
+        if (Foto === Estrela) {
+            setFoto(Pincel)
+        }
+        if (Foto === Pincel) {
+            setFoto(Coroa)
+        }
+        if (Foto === Coroa) {
+            setFoto(Medalha)
+        }
+        if (Foto === Medalha) {
+            setFoto(Presente)
+        }
+    }
+
     return(
         <View style={styles.container}>
-            <View style={styles.containerLogo}>
-                <Animatable.Image 
-                    animation="flipInY"
-                    source={require('../../../assets/gift-dynamic-premium.png')}
-                    style={styles.image}
-                    resizeMode="contain"
-                />
-            </View>
+            <Animatable.View style={styles.containerLogo} animation="flipInY">
+                <TouchableOpacity style={{width: '100%'}} onPress={trocarFoto}>
+                    <Animatable.Image 
+                        animation="pulse"
+                        easing="ease-out" 
+                        duration={4000}
+                        onAnimationEnd={() => setFoto(Estrela)}
+                        source={Foto}
+                        style={styles.image}
+                        resizeMode="contain"
+                    />
+                </TouchableOpacity>
+            </Animatable.View>
             <Animatable.View delay={600} animation="fadeInUp" style={styles.containerForm}>
                 <Text style={styles.title}>Defina suas tarefas e metas e sempre as tenha na palma de sua mão!</Text>
                 <Text style={styles.text}>Faça o login para começar!</Text>

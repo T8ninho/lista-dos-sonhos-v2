@@ -7,16 +7,17 @@ import Flor from '../../Images/background.jpg'
 import Papel from '../../Images/Papel.jpg'
 import Vidro from '../../Images/Vidro.jpg'
 import Desenho from '../../Images/Desenho.jpg'
+
 import Theme from '../../../../Theme'
 
-export default function Temas({route, navigation}){
-    const [Tema, setTema] = useState(Tema1)
+export default function Temas(){
+    const [Tema, setTema] = useState('Tema 1')
 
-    const Tema1 = Flor;
-    const Tema2 = Raposa;
-    const Tema3 = Papel;
-    const Tema4 = Vidro;
-    const Tema5 = Desenho;
+    const Img1 = Flor;
+    const Img2 = Raposa;
+    const Img3 = Papel;
+    const Img4 = Vidro;
+    const Img5 = Desenho;
 
 
     return(
@@ -25,73 +26,32 @@ export default function Temas({route, navigation}){
                 resizeMode="cover" 
                 blurRadius={Theme.colors.Blur} 
                 style={styles.Container}>
-                {/* <Text variant="titleLarge">Sou o Tema</Text>
+                <Text variant="titleLarge" style={{color: Theme.colors.message}}>Sou o Tema: {Tema}</Text>
                 
-                <Button
+                {/* <Button
                     title="Update the title"
                     onPress={() => navigation.setOptions({ title: 'Titulo 1!' })}
-                >Titulo 1!</Button> */}
+                >Titulo 1!</Button>  */}
 
                 <View style={styles.ContainerBox}>
-                    <TouchableOpacity style={styles.Box} onPress={() => {
-                    // Pass and merge params back to home screen
-                    navigation.navigate({
-                        name:'Home',
-                        
-                        params: { ImageBG: Tema1 },
-                    })}}>
-                        <Image source={Tema1} style={styles.SubBox}/>
+                    <TouchableOpacity style={styles.Box} onPress={() => setTema('Tema 1')}>
+                        <Image source={Img1} style={styles.SubBox}/>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.Box} onPress={() => {
-                    // Pass and merge params back to home screen
-                    navigation.navigate({
-                        name:'Home',
-                        
-                        params: { ImageBG: Tema2 },
-                    })}}>
-                        <Image source={Tema2} style={styles.SubBox}/>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.ContainerBox} onPress={() => setTema(Tema3)}>
-                    <TouchableOpacity style={styles.Box} onPress={() => {
-                    // Pass and merge params back to home screen
-                    navigation.navigate({
-                        name:'Home',
-                        
-                        params: { ImageBG: Tema3 },
-                    })}}>
-                        <Image source={Tema3} style={styles.SubBox}/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.Box} onPress={() => {
-                    // Pass and merge params back to home screen
-                    navigation.navigate({
-                        name:'Home',
-                        
-                        params: { ImageBG: Tema4 },
-                    })}}>
-                        <Image source={Tema4} style={styles.SubBox}/>
+                    <TouchableOpacity style={styles.Box} onPress={() => setTema('Tema 2')}>
+                        <Image source={Img2} style={styles.SubBox}/>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.ContainerBox}>
-                    <TouchableOpacity style={styles.Box} onPress={() => {
-                    // Pass and merge params back to home screen
-                    navigation.navigate({
-                        name:'Home',
-                        
-                        params: { ImageBG: Tema5 },
-                    })}}>
-                        <Image source={Tema5} style={styles.SubBox}/>
+                    <TouchableOpacity style={styles.Box} onPress={() => setTema('Tema 3')}>
+                        <Image source={Img3} style={styles.SubBox}/>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.Box}>
-                        <Image source={Flor} style={styles.SubBox}/>
+                    <TouchableOpacity style={styles.Box} onPress={() => setTema('Tema 4')}>
+                        <Image source={Img4} style={styles.SubBox}/>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.ContainerBox}>
-                    <TouchableOpacity style={styles.Box}>
-                        <Image source={Flor} style={styles.SubBox}/>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.Box}>
-                        <Image source={Flor} style={styles.SubBox}/>
+                    <TouchableOpacity style={styles.Box} onPress={() => setTema('Tema 5')}>
+                        <Image source={Img5} style={styles.SubBox}/>
                     </TouchableOpacity>
                 </View>
                 
