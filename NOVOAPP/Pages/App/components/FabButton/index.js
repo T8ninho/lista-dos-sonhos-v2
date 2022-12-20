@@ -96,11 +96,17 @@ export default class FabButton extends Component {
                 <Animated.View style={[styles.submenu, coracaoStyle]}>
                     <IconC name="heart" size={24} color="#FFF" />
                 </Animated.View>
-            </TouchableWithoutFeedback> */}
+            </TouchableWithoutFeedback>
+
+            <TouchableWithoutFeedback onPress={this.props.NovoItem}>
+                <Animated.View style={[styles.submenu, formStyle]}>
+                    <IconC name="form" size={24} color="#FFF" />
+                </Animated.View>
+            </TouchableWithoutFeedback>*/}
 
             <TouchableWithoutFeedback onPress={this.props.Novidades}>
                 <Animated.View style={[styles.submenuCont, NovidadesStyle]}>
-                    <Text>Nova Tarefa</Text>
+                    <Text>Novidades</Text>
                     <Animated.View style={styles.submenu}>
                         <IconC name="notification" size={24} color="#FFF" />
                     </Animated.View>
@@ -108,7 +114,7 @@ export default class FabButton extends Component {
             </TouchableWithoutFeedback>
             <TouchableWithoutFeedback onPress={this.props.Temas}>
                 <Animated.View style={[styles.submenuCont, temasStyle]}>
-                    <Text>Nova Tarefa</Text>
+                    <Text>Temas</Text>
                     <Animated.View style={styles.submenu}>
                         <IconC name="isv" size={24} color="#FFF" />
                     </Animated.View>
@@ -116,7 +122,7 @@ export default class FabButton extends Component {
             </TouchableWithoutFeedback>
             <TouchableWithoutFeedback onPress={this.props.Concluidas}>
                 <Animated.View style={[styles.submenuCont, coracaoStyle]}>
-                    <Text>Nova Tarefa</Text>
+                    <Text>Tarefas Concluídas</Text>
                     <Animated.View style={styles.submenu}>
                         <IconC name="heart" size={24} color="#FFF" />
                     </Animated.View>
