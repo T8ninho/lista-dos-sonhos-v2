@@ -6,6 +6,7 @@ import Temas from '../Pages/App/pages/Temas'
 import CompleteTodo from "../Pages/App/pages/CompleteTodo";
 
 import Theme from "../Theme";
+import Novidades from "../Pages/App/pages/Novidades";
 
 const Stack = createNativeStackNavigator();
 
@@ -48,6 +49,17 @@ export default function AppRoutes(){
             <Stack.Screen 
                 name="CompleteTodo"
                 component={CompleteTodo}
+                options={{
+                    headerShown: true,
+                    headerStyle: {
+                        backgroundColor: Theme.colors.BG,
+                    },
+                    headerTintColor: '#fff',
+                }}
+            />
+            <Stack.Screen 
+                name="Novidades"
+                component={Novidades}
                 options={{
                     headerShown: true,
                     headerStyle: {

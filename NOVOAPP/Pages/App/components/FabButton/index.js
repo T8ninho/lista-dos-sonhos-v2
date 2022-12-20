@@ -55,6 +55,18 @@ export default class FabButton extends Component {
             }
         ]
     }
+
+    const NovidadesStyle = {
+        transform: [
+            { scale: this.animation },
+            {
+                translateY: this.animation.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [0, -240]
+                })
+            }
+        ]
+    }
     
     const rotation = {
         transform: [
@@ -68,21 +80,54 @@ export default class FabButton extends Component {
     }
     return (
         <View style={[styles.container, this.props.style]}>
+            {/* <TouchableWithoutFeedback onPress={this.props.Novidades}>
+                <Animated.View style={[styles.submenu, NovidadesStyle]}>
+                    <IconC name="notification" size={24} color="#FFF" />
+                </Animated.View>
+            </TouchableWithoutFeedback>
+
             <TouchableWithoutFeedback onPress={this.props.Temas}>
-                <Animated.View style={[styles.button, styles.submenu, temasStyle]}>
+                <Animated.View style={[styles.submenu, temasStyle]}>
                     <IconC name="isv" size={24} color="#FFF" />
                 </Animated.View>
             </TouchableWithoutFeedback>
 
             <TouchableWithoutFeedback onPress={this.props.Concluidas}>
-                <Animated.View style={[styles.button, styles.submenu, coracaoStyle]}>
+                <Animated.View style={[styles.submenu, coracaoStyle]}>
                     <IconC name="heart" size={24} color="#FFF" />
                 </Animated.View>
-            </TouchableWithoutFeedback>
+            </TouchableWithoutFeedback> */}
 
+            <TouchableWithoutFeedback onPress={this.props.Novidades}>
+                <Animated.View style={[styles.submenuCont, NovidadesStyle]}>
+                    <Text>Nova Tarefa</Text>
+                    <Animated.View style={styles.submenu}>
+                        <IconC name="notification" size={24} color="#FFF" />
+                    </Animated.View>
+                </Animated.View>
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={this.props.Temas}>
+                <Animated.View style={[styles.submenuCont, temasStyle]}>
+                    <Text>Nova Tarefa</Text>
+                    <Animated.View style={styles.submenu}>
+                        <IconC name="isv" size={24} color="#FFF" />
+                    </Animated.View>
+                </Animated.View>
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={this.props.Concluidas}>
+                <Animated.View style={[styles.submenuCont, coracaoStyle]}>
+                    <Text>Nova Tarefa</Text>
+                    <Animated.View style={styles.submenu}>
+                        <IconC name="heart" size={24} color="#FFF" />
+                    </Animated.View>
+                </Animated.View>
+            </TouchableWithoutFeedback>
             <TouchableWithoutFeedback onPress={this.props.NovoItem}>
-                <Animated.View style={[styles.button, styles.submenu, formStyle]}>
-                    <IconC name="form" size={24} color="#FFF" />
+                <Animated.View style={[styles.submenuCont, formStyle]}>
+                    <Text>Nova Tarefa</Text>
+                    <Animated.View style={styles.submenu}>
+                        <IconC name="form" size={24} color="#FFF" />
+                    </Animated.View>
                 </Animated.View>
             </TouchableWithoutFeedback>
 
@@ -117,10 +162,19 @@ const styles = StyleSheet.create({
     menu: {
         backgroundColor: '#00213B'
     },
+    submenuCont: {
+        position: 'absolute',
+        justifyContent: 'center',
+        alignItems: 'flex-end',
+        margin: 20
+    },
     submenu: {
         width: 48,
         height: 48,
         borderRadius: 48 / 2,
-        backgroundColor: '#00213B'
+        backgroundColor: '#00213B',
+        position: 'absolute',
+        justifyContent: 'center',
+        alignItems: 'center',
     }
 })

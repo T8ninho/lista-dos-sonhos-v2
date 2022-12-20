@@ -1,19 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import firestore from '@react-native-firebase/firestore';
-import { List, Text, Button } from 'react-native-paper';
+import { List, Text } from 'react-native-paper';
 import { View } from 'react-native';
 import Theme from '../../../../Theme';
+import AuthContext from '../../../../contexts/auth';
 
 function Todo({id, title, complete, Quantidade}) {
+    const { DB } = useContext(AuthContext);
+
     async function toggleComplete() {
-        if(complete === true) {
-            await firestore()
-            .collection('todos')
+        if(complete) {
+            await DB
             .doc(id)
             .delete();
         } else {
-            await firestore()
-            .collection('todos')
+            await DB
             .doc(id)
             .update({
             complete: !complete,

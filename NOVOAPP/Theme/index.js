@@ -1,5 +1,4 @@
 
-import Tema from '../assets/algas.jpg'
 import Flor from '../Pages/App/Images/background.jpg'
 
 const Theme = {
@@ -13,6 +12,8 @@ const Theme = {
       primary: "#38a69d",
       secondary: "rgb(109, 88, 105)",
       tertiary: "rgb(130, 83, 69)",
+      BlurColor: "rgba(0, 0, 0, 0.3)",
+
     },
   };
 

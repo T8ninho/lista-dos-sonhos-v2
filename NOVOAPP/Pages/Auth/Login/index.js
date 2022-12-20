@@ -2,8 +2,6 @@ import React, {useContext} from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { TextInput } from 'react-native-paper';
 
-import {signIn} from '../../../services/auth';
-
 import * as Animatable from 'react-native-animatable'
 import Theme from '../../../Theme';
 
@@ -11,11 +9,11 @@ import AuthContext from '../../../contexts/auth';
 
 export default function Login({navigation}){
 //
-    const { signed, signIn } = useContext(AuthContext);
+    const { signed, Entrar } = useContext(AuthContext);
     console.log(signed)
 
     function handleSignIn() {
-        signIn()
+        Entrar()
     }
     
 //

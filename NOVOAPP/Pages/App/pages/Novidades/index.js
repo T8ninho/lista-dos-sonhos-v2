@@ -3,31 +3,31 @@ import { View, FlatList, ImageBackground, StyleSheet } from 'react-native';
 import {Text } from 'react-native-paper'
 import AuthContext from '../../../../contexts/auth';
 import Theme from '../../../../Theme';
-import ref from '../../components/Firebase';
 
-import Todo from '../HomeScreen/Todo';
+import ItemNovidade from './ItemNovidade';
 
-export default function CompleteTodo({loading, route, Blur}) {
+export default function Novidades({loading}) {
 
-    const [Completos, setCompletos] = useState([]);
-    const { DB } = useContext(AuthContext);
+    const [Novidades, setNovidades] = useState([]);
+    const { DBNovidades } = useContext(AuthContext);
 
     
     useEffect(() => {
-        return DB.onSnapshot((querySnapshot) => {
+        return DBNovidades.onSnapshot((querySnapshot) => {
             const listComp = [];
             querySnapshot.forEach(doc => {
-                const { title, complete, Quantidade } = doc.data();
-                if(complete === false) return;
+                const { title, date, description, ImagePath } = doc.data();
+                if(!ImagePath) return;
                 listComp.push({
                     id: doc.id,
                     title,
-                    complete,
-                    Quantidade,
+                    description,
+                    date,
+                    ImagePath,
                 });
             });
     
-            setCompletos(listComp);
+            setNovidades(listComp);
     
             if (loading) {
                 return(
@@ -42,21 +42,15 @@ export default function CompleteTodo({loading, route, Blur}) {
     return(
         <View style={{flex: 1}}>
             <ImageBackground source={Theme.colors.BGImage} resizeMode="cover" style={styles.image} blurRadius={Theme.colors.Blur}>
-                <Text 
-                    variant="titleLarge" 
-                    style={{
-                    borderBottomColor: '#000',
-                    borderBottomWidth: 1,
-                    color: Theme.colors.message
-                    }}> Completas </Text>
                 <FlatList
                 style={{
                     flex: 1,
-                    padding: 20,
+                    paddingLeft: 20,
+                    paddingRight: 20,
                 }}
-                data={Completos}
+                data={Novidades}
                 keyExtractor={(item) => item.id}
-                renderItem={({ item }) => <Todo {...item} />}
+                renderItem={({ item }) => <ItemNovidade {...item} />}
                 />
             </ImageBackground>
         </View>
@@ -66,6 +60,6 @@ export default function CompleteTodo({loading, route, Blur}) {
 const styles = StyleSheet.create({
     image: {
         flex: 1,
-        justifyContent: "center"
+        justifyContent: "center",
       },
 })

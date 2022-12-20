@@ -16,17 +16,18 @@ export default function HomeScreen({route, navigation}) {
 
     const [loading, setLoading] = useState(true);
     const [Incompletos, setIncompletos] = useState([]);
-    const { signOut, user } = useContext(AuthContext);
+    const { Sair, user, DB } = useContext(AuthContext);
     // console.log(signed)
-    // console.log(user.name)
+    console.log(user.displayName)
+    // console.log('User metadata: ', user.metadata);
 
     function handleSignOut() {
-      signOut()
+      Sair()
     }
 
     //Tarefas Incompletas
     useEffect(() => {
-      return ref.onSnapshot((querySnapshot) => {
+      return DB.onSnapshot((querySnapshot) => {
           const listInc = [];
           querySnapshot.forEach(doc => {
               const { title, complete, Quantidade } = doc.data();
@@ -63,7 +64,7 @@ export default function HomeScreen({route, navigation}) {
           borderBottomWidth: 1,
           textAlign: 'center',
           color: Theme.colors.message
-        }}> Incompletas {user.name}</Text>
+        }}> Incompletas: {user.displayName} </Text>
 
         <Button mode='contained' onPress={handleSignOut}>Sair</Button>
 
@@ -81,6 +82,7 @@ export default function HomeScreen({route, navigation}) {
           Temas={() => navigation.navigate('Temas')}
           Concluidas={() => navigation.navigate('CompleteTodo')}
           NovoItem={() => navigation.navigate('NewTodo')} 
+          Novidades={() => navigation.navigate('Novidades')} 
           style={{ 
             bottom: 80, 
             right: 60
