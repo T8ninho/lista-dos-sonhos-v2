@@ -106,7 +106,7 @@ export default class FabButton extends Component {
 
             <TouchableWithoutFeedback onPress={this.props.Novidades}>
                 <Animated.View style={[styles.submenuCont, NovidadesStyle]}>
-                    <Text>Novidades</Text>
+                    <Text>Novidades </Text>
                     <Animated.View style={styles.submenu}>
                         <IconC name="notification" size={24} color="#FFF" />
                     </Animated.View>
@@ -114,7 +114,7 @@ export default class FabButton extends Component {
             </TouchableWithoutFeedback>
             <TouchableWithoutFeedback onPress={this.props.Temas}>
                 <Animated.View style={[styles.submenuCont, temasStyle]}>
-                    <Text>Temas</Text>
+                    <Text>Temas </Text>
                     <Animated.View style={styles.submenu}>
                         <IconC name="isv" size={24} color="#FFF" />
                     </Animated.View>
@@ -122,15 +122,15 @@ export default class FabButton extends Component {
             </TouchableWithoutFeedback>
             <TouchableWithoutFeedback onPress={this.props.Concluidas}>
                 <Animated.View style={[styles.submenuCont, coracaoStyle]}>
-                    <Text>Tarefas Concluídas</Text>
+                    <Text>Concluídas </Text>
                     <Animated.View style={styles.submenu}>
                         <IconC name="heart" size={24} color="#FFF" />
                     </Animated.View>
                 </Animated.View>
             </TouchableWithoutFeedback>
-            <TouchableWithoutFeedback onPress={this.props.NovoItem}>
+            <TouchableWithoutFeedback onPress={this.props.NovoItem} style={{position: 'absolute'}}>
                 <Animated.View style={[styles.submenuCont, formStyle]}>
-                    <Text>Nova Tarefa</Text>
+                    <Text>Nova </Text>
                     <Animated.View style={styles.submenu}>
                         <IconC name="form" size={24} color="#FFF" />
                     </Animated.View>
@@ -149,8 +149,9 @@ export default class FabButton extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        alignItems: 'center',
-        position: 'absolute'
+        alignItems: 'flex-end',
+        top: -80,
+        left: -30
     },
     button: {
         position: 'absolute',
@@ -170,16 +171,15 @@ const styles = StyleSheet.create({
     },
     submenuCont: {
         position: 'absolute',
+        flexDirection: 'row',
         justifyContent: 'center',
-        alignItems: 'flex-end',
-        margin: 20
+        alignItems: 'center',
     },
     submenu: {
         width: 48,
         height: 48,
         borderRadius: 48 / 2,
         backgroundColor: '#00213B',
-        position: 'absolute',
         justifyContent: 'center',
         alignItems: 'center',
     }
